@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"    
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"     
+      xmlns:jsf="http://xmlns.jcp.org/jsf"         
+      xmlns:passthrough="http://xmlns.jcp.org/jsf/passthrough"     
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">     
+
+
+    <div class="gz">
+        <h:form prependId="false">
+            <ul class="ca qo anx">
+
+                <!-- message, feed -->
+                <li class="qf b aml">
+                    <div class="input-group">
+
+                        <input type="text" class="form-control" jsf:value="#{postBean.message}" placeholder="Message"/>
+                        <div class="fj">
+                            <button type="submit" class="cg fm" jsf:action="#{postBean.addMessage()}">
+                                <span class="h xi"></span>
+                            </button>
+                        </div>
+
+                    </div>
+                </li>
+                <!-- end message, feed -->
+                <p:repeat value="#{postBean.messages}" var="message">
+                    <li class="qf b aml">
+                        #{message}
+                    </li>
+                </p:repeat>
+                <hr/>
+                all messages
+                <p:repeat value="#{postBean.allMessages}" var="message">
+                    <li class="qf b aml">
+                        #{message}
+                    </li>
+                </p:repeat>
+
+                <!-- post -->
+                <li class="qf b aml">
+                    <a class="qj" href="#">
+                        <img
+                            class="qh cu"
+                            src="#{request.contextPath}/resources/assets/img/avatar-dhg.png"/>
+                    </a>
+                    <div class="qg">
+                        <div class="qn">
+                            <small class="eg dp">4 min</small>
+                            <h5>Dave Gamache</h5>
+                        </div>
+
+                        <p>
+                            Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                        </p>
+                        <div class="any" data-grid="images">
+                            <div style="display: none">
+                                <img data-action="zoom" data-width="1050" data-height="700" src="#{request.contextPath}/resources/assets/img/unsplash_1.jpg"/>
+                            </div>
+                            <div style="display: none">
+                                <img data-action="zoom" data-width="640" data-height="640" src="#{request.contextPath}/resources/assets/img/instagram_1.jpg"/>
+                            </div>
+
+                            <div style="display: none">
+                                <img data-action="zoom" data-width="640" data-height="640" src="#{request.contextPath}/resources/assets/img/instagram_13.jpg"/>
+                            </div>
+
+                            <div style="display: none">
+                                <img data-action="zoom" data-width="1048" data-height="700" src="#{request.contextPath}/resources/assets/img/unsplash_2.jpg"/>
+                            </div>
+                        </div>
+                        <!-- Reply -->
+                        <ul class="qo alm">
+                            <li class="qf">
+                                <a class="qj" href="#">
+                                    <img
+                                        class="qh cu"
+                                        src="#{request.contextPath}/resources/assets/img/avatar-fat.jpg"/>
+                                </a>
+                                <div class="qg">
+                                    <strong>Jacon Thornton: </strong>
+                                    Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
+                                </div>
+                            </li>
+                            <li class="qf">
+                                <a class="qj" href="#">
+                                    <img
+                                        class="qh cu"
+                                        src="#{request.contextPath}/resources/assets/img/avatar-mdo.png"/>
+                                </a>
+                                <div class="qg">
+                                    <strong>Mark Otto: </strong>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- End Reply -->
+                    </div>
+                </li>
+                <!-- end post -->
+                <li class="qf b aml">
+                    <a class="qj" href="#">
+                        <img
+                            class="qh cu"
+                            src="#{request.contextPath}/resources/assets/img/avatar-fat.jpg"/>
+                    </a>
+                    <div class="qg">
+                        <div class="aoc">
+                            <div class="qn">
+                                <small class="eg dp">12 min</small>
+                                <h5>Jacob Thornton</h5>
+                            </div>
+                            <p>
+                                Donec id elit non mi porta gravida at eget metus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="qf b aml">
+                    <a class="qj" href="#">
+                        <img
+                            class="qh cu"
+                            src="#{request.contextPath}/resources/assets/img/avatar-mdo.png"/>
+                    </a>
+                    <div class="qg">
+                        <div class="qn">
+                            <small class="eg dp">34 min</small>
+                            <h5>Mark Otto</h5>
+                        </div>
+
+                        <p>
+                            Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                        </p>
+
+                        <div class="any" data-grid="images">
+                            <img style="display: none" data-width="640" data-height="640" data-action="zoom" src="#{request.contextPath}/resources/assets/img/instagram_3.jpg"/>
+                        </div>
+
+                        <ul class="qo">
+                            <li class="qf">
+                                <a class="qj" href="#">
+                                    <img
+                                        class="qh cu"
+                                        src="#{request.contextPath}/resources/assets/img/avatar-dhg.png"/>
+                                </a>
+                                <div class="qg">
+                                    <strong>Dave Gamache: </strong>
+                                    Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+            </ul>
+        </h:form>
+    </div>
+
+
+
+
+
+</html>
+
