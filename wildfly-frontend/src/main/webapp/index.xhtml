@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"     
+      xmlns:jsf="http://xmlns.jcp.org/jsf"         
+      xmlns:passthrough="http://xmlns.jcp.org/jsf/passthrough" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">      
+
+    <f:view contracts="default" transient="false">
+        <ui:composition template="/template.xhtml">  
+            <ui:define name="content"> 
+                <h:form>                  
+                    <div class="container">
+                        <h:panelGroup rendered="#{empty contacts}">
+                            <em>No registered contacts.</em>
+                        </h:panelGroup>
+
+                        <h:dataTable var="list" value="#{contacts}"
+                                     rendered="#{not empty contacts}"
+                                     styleClass="simpletablestyle">
+
+                            <h:column>
+                                <f:facet name="header">Id</f:facet>
+                                    #{list.id}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Name</f:facet>
+                                    #{list.firstName}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Last Name</f:facet>
+                                    #{list.lastName}
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">Phone #</f:facet>
+                                    #{list.phone}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">E-mail #</f:facet>
+                                    #{list.email}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">REST URL</f:facet>
+                                <a href="#{request.contextPath}/rest/contacts/#{list.id}" target="_blank">/rest/contacts/#{list.id}</a>
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </f:view>
+</html>
