@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">    
+    <h:head>
+        <ui:insert name="header"></ui:insert> 
+        <ui:include src="/WEB-INF/layout/header.xhtml"/>     
+    </h:head>
+    <h:body styleClass="ang">
+        <div class="anq" id="app-growl"></div>
+        <ui:insert name="nav"></ui:insert> 
+        <ui:include src="/WEB-INF/layout/nav.xhtml"/>  
+        <div class="by amt">
+            <div class="gc">
+                <ui:insert name="left"></ui:insert> 
+                <ui:include src="/WEB-INF/layout/left.xhtml"/>        
+                <ui:insert name="content"></ui:insert> 
+                <ui:include src="/WEB-INF/layout/content.xhtml"/>  
+                <ui:insert name="right"></ui:insert> 
+                <ui:include src="/WEB-INF/layout/right.xhtml"/>  
+            </div>
+        </div>
+        <div class="container">
+            <ui:insert name="footer"></ui:insert> 
+            <hr/>
+            <ui:include src="/WEB-INF/layout/footer.xhtml"/> 
+        </div><!-- /.container -->
+        <ui:include src="/WEB-INF/layout/footer_includes.xhtml"/>  
+        <h:outputScript library="primefaces" name="jquery/jquery.js"  target="head"/>
+        <h:outputScript target="head">
+            $ = jQuery;
+        </h:outputScript>
+        <script src="#{request.contextPath}/resources/assets/js/jquery.min.js"></script>
+        <script src="#{request.contextPath}/resources/assets/js/chart.js"></script>
+        <script src="#{request.contextPath}/resources/assets/js/toolkit.js"></script>
+        <script src="#{request.contextPath}/resources/assets/js/application.js"></script>
+        <script>
+            // execute/clear BS loaders for docs
+            jQuery(function () {
+                if (window.BS &amp; &amp; window.BS.loader &amp; &amp; window.BS.loader.length) {
+                    while (BS.loader.length) {
+                        (BS.loader.pop())()
+                    }
+                }
+            })
+        </script>
+
+    </h:body>
+</html>
+
