@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"    
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"     
+      xmlns:jsf="http://xmlns.jcp.org/jsf"         
+      xmlns:passthrough="http://xmlns.jcp.org/jsf/passthrough"     
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+    
+    <h:head>    
+        
+    </h:head>
+    <f:view contracts="public" transient="false">
+        <ui:composition template="/template.xhtml">              
+            <ui:define name="content">
+                <div class="gb ut">
+                    <div class="uv">
+                        <h:form role="form" styleClass="alq dj j">
+                            <a href="#" class="l amb">
+                                <img src="#{request.contextPath}/resources/assets/img/brand.png" alt="brand"/>
+                            </a>
+                            <div class="et">
+                                <input class="form-control" id="firstname" jsf:value="#{loginBean.userModel.firstname}" jsf:required="true"  placeholder="Firstname"/>
+                            </div>
+                            <div class="et">
+                                <input class="form-control" id="lastname" jsf:value="#{loginBean.userModel.lastname}" jsf:required="true"  placeholder="Lastname"/>
+                            </div>
+                            <div class="et">
+                                <input class="form-control"  id="email" jsf:value="#{loginBean.userModel.email}" jsf:required="true" placeholder="E-mail"/>
+                            </div>                            
+                            <div class="et alu">
+                                <input type="password" class="form-control" id="password"  jsf:value="#{loginBean.userModel.password}" jsf:required="true" placeholder="Password"/>
+                            </div>
+                            <div class="amb">
+                                <button class="cg fp" jsf:action="#{loginBean.loginUser()}">Register</button>                                
+                            </div>
+                            <footer class="apd">
+                                <a href="login.jsf" class="dp">Sign in</a>
+                            </footer>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </f:view>
+</html>
