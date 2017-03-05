@@ -6,20 +6,17 @@
               version="2.2">  
       
     <application>
-        <locale-config>
+<!--        <locale-config>
             <default-locale>en</default-locale>           
-        </locale-config>    
+        </locale-config>            -->
         <resource-bundle>
             <base-name>props/i18n</base-name>
             <var>i18n</var>        
         </resource-bundle>
         <resource-bundle>
-            <base-name>props/access</base-name>
+            <base-name>access</base-name>
             <var>accessProp</var>
-        </resource-bundle>
-        <message-bundle>
-            messages
-        </message-bundle>      
+        </resource-bundle>         
     </application>
     <navigation-rule>
         <from-view-id>*</from-view-id>        

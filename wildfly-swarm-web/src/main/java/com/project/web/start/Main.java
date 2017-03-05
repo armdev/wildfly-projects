@@ -3,6 +3,7 @@ package com.project.web.start;
 import com.project.web.auth.LoginBean;
 import com.project.web.auth.MainDataBean;
 import com.project.web.auth.PostBean;
+import com.project.web.handlers.BundleProducer;
 import com.project.web.handlers.SessionContext;
 import com.project.web.model.UserModel;
 import com.project.web.rest.UserRESTClient;
@@ -44,7 +45,8 @@ public class Main {
         deployment.addClass(PostBean.class);
         deployment.addClass(MainDataBean.class);      
         deployment.addClass(LoginBean.class);      
-        deployment.addClass(SessionContext.class);            
+        deployment.addClass(SessionContext.class);  
+        deployment.addClass(BundleProducer.class);  
         
         deployment.staticContent();
         
@@ -67,7 +69,7 @@ public class Main {
                 new ClassLoaderAsset("pages/profile.xhtml", Main.class.getClassLoader()), "pages/profile.xhtml");
           
           deployment.addAsWebResource(
-                new ClassLoaderAsset("props/i18n.properties", Main.class.getClassLoader()), "pages/i18n.properties");
+                new ClassLoaderAsset("props/i18n.properties", Main.class.getClassLoader()), "props/i18n.properties");
 
         deployment.addAsDirectory("contracts").addAllDependencies();
         deployment.addAsLibrary("contracts").addAllDependencies();

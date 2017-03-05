@@ -5,11 +5,13 @@ package com.project.web.handlers;
 import com.project.web.model.UserModel;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.enterprise.inject.Model;
 
-@ManagedBean(name = "sessionContext")
+
+//@ManagedBean(name = "sessionContext")
 @SessionScoped
+@Model
 public class SessionContext implements Serializable {
     
     private UserModel user;

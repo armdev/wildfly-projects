@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.faces.bean.ApplicationScoped;
+import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Model;
+
 import javax.faces.bean.ManagedBean;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -20,8 +23,9 @@ import org.apache.http.util.EntityUtils;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.json.simple.JSONObject;
 
-@ManagedBean(eager = true, name = "userRESTClient")
-@ApplicationScoped
+//@ManagedBean(eager = true, name = "userRESTClient")
+
+@Stateless
 public class UserRESTClient implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,6 +44,7 @@ public class UserRESTClient implements Serializable {
 
     public UserModel userRegistration(UserModel model) {         
         try {
+            
             HttpPost request = new HttpPost(REST_PATH + "auth/user/register");
             JSONObject json = new JSONObject();
             json.put("firstname", model.getFirstname());
@@ -63,6 +68,7 @@ public class UserRESTClient implements Serializable {
     public UserModel getUserById(String userId) {
         UserModel userModel = null;
         try {            
+               System.out.println("call login   ");
             HttpGet request = new HttpGet(REST_PATH + "auth/user/find/" + userId);
             request.addHeader("charset", "UTF-8");
             HttpResponse response = HTTP_CLIENT.execute(request);
@@ -71,6 +77,7 @@ public class UserRESTClient implements Serializable {
             ObjectMapper mapper = new ObjectMapper();
             userModel = mapper.readValue((EntityUtils.toString(entity)), UserModel.class);
         } catch (IOException | ParseException e) {
+            e.printStackTrace();
         }
         return userModel;
 

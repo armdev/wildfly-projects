@@ -12,17 +12,19 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 
 /**
  *
  * @author armenar
  */
-@ManagedBean()
+//@ManagedBean()
 @Stateless
 @SessionScoped
 public class PostBean {
 
-    @ManagedProperty(value = "#{mainDataBean}")
+    //@ManagedProperty(value = "#{mainDataBean}")
+    @Inject
     private MainDataBean mainDataBean;
     private final List<String> messages = new ArrayList<>();
     private String message;

@@ -8,15 +8,12 @@ package com.project.web.auth;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Model;
 
-/**
- *
- * @author armenar
- */
-@ManagedBean(eager = true)
+
 @ApplicationScoped
+@Model
 public class MainDataBean {
 
     private List<String> mainMessages = new ArrayList<>();

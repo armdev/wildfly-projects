@@ -3,26 +3,32 @@ package com.project.web.auth;
 import com.project.web.handlers.SessionContext;
 import com.project.web.model.UserModel;
 import com.project.web.rest.UserRESTClient;
+import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 
-@ManagedBean(name = "loginBean")
+//@ManagedBean(name = "loginBean")
+@Model
 @RequestScoped
 public class LoginBean {
 
-    @ManagedProperty(value = "#{userRESTClient}")
-    private UserRESTClient userRESTClient;
-    @ManagedProperty("#{i18n}")
-    private ResourceBundle bundle = null;
-    @ManagedProperty("#{sessionContext}")
-    private SessionContext sessionContext = null;
+  //  @ManagedProperty(value = "#{userRESTClient}")
+    @Inject
+    private UserRESTClient userRESTClient = new UserRESTClient();
+    //@ManagedProperty("i18n")
+    @Inject
+    private PropertyResourceBundle  bundle;
+    //@ManagedProperty("#{sessionContext}")
+    @Inject
+    private SessionContext sessionContext;
     private UserModel userModel;
 
     public LoginBean() {        
@@ -34,22 +40,26 @@ public class LoginBean {
     }
 
     public String loginUser() {
+        System.out.println("loginUser called");
         FacesContext context = FacesContext.getCurrentInstance();
         ExternalContext ex = context.getExternalContext();       
-        UserModel user = userRESTClient.userLogin(userModel);
-        if (user != null) {
-            sessionContext.setUser(user);
-            return "profile";
-        }        
+//        UserModel user = userRESTClient.userLogin(userModel);
+//        if (user != null) {
+//            sessionContext.setUser(user);
+//            return "profile";
+//        }        
         FacesMessage msg = new FacesMessage(bundle.getString("nouser"), bundle.getString("nouser"));
         FacesContext.getCurrentInstance().addMessage(null, msg);
         return null;       
     }
-
     
-    public void setUserRESTClient(UserRESTClient userRESTClient) {
-        this.userRESTClient = userRESTClient;
-    }  
+     public String register() {
+        System.out.println("register called");
+        FacesContext context = FacesContext.getCurrentInstance();
+        ExternalContext ex = context.getExternalContext();       
+        UserModel user = userRESTClient.userRegistration(userModel);     
+        return "login";       
+    }
 
     public UserModel getUserModel() {
         return userModel;
@@ -63,12 +73,7 @@ public class LoginBean {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
     }
 
-    public void setSessionContext(SessionContext sessionContext) {
-        this.sessionContext = sessionContext;
-    }
+ 
 
-    public void setBundle(ResourceBundle bundle) {
-        this.bundle = bundle;
-    }
-
+ 
 }
