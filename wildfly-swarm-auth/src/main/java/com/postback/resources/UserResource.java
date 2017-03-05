@@ -1,5 +1,6 @@
 package com.postback.resources;
 
+import com.postback.dto.UserDTO;
 import com.postback.entities.User;
 import com.postback.facades.UserFacade;
 import javax.enterprise.context.ApplicationScoped;
@@ -36,6 +37,14 @@ public class UserResource {
     public Long create(User entity) {
         Long id = userFacade.registerNewUser(entity);
         return id;
+    }
+    
+    @POST
+    @Path("/user/login")
+    @Consumes({MediaType.APPLICATION_JSON})
+    public UserDTO login(User entity) {
+        UserDTO user = userFacade.doLogin(entity.getEmail(), entity.getPasswd());
+        return user;
     }
 
     @DELETE

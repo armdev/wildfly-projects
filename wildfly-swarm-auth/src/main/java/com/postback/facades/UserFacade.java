@@ -20,13 +20,13 @@ public class UserFacade extends AbstractFacade<User> {
     @PersistenceContext(name = "userPU")
     private EntityManager em;
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
 
     public UserFacade() {
         super(User.class);
+    }
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
     }
 
     public UserDTO doLogin(String email, String password) {
